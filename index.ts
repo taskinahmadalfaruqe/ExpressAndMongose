@@ -115,6 +115,9 @@
 
     // Aggrigation Framework
     // Match, Project
-    db.
+    db.PracticeBanckend.aggregate(
+        { $match: { gender: "Male" } },
+        { $addFields: { level: 2, subject: "CSE" } }
+    )
 
 }
