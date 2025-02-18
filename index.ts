@@ -119,5 +119,21 @@
         { $match: { gender: "Male" } },
         { $addFields: { level: 2, subject: "CSE" } }
     )
+    
+    // Group
+    // start with id
+    // sum, 
+    // max,
+    // min, 
+    // avg, 
+    // accumulator, 
+    // count 
+    // //push
+
+    // Project
+    // tag name change
+    // substraction
+
+    // group and unwind
 
 }
