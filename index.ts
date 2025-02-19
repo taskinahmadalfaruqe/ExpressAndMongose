@@ -143,8 +143,8 @@
         {
             $bucket: {
                 groupBy: "$age",
-                boundaries: [10, 20, 30, 40, 50, 60, 70],
-                default: { "70 er Upor er Manus"},
+                boundaries: [10, 20, 30, 40, 50, 60, 70, 80, 90],
+                default: "90 er Upor er Manus",
                 output: {
                     // Stage -01.02 (How Much Peopel In A Group)
                     count: { $sum: 1 },
@@ -157,15 +157,16 @@
         },
         // Stage -02 (Sort the Documet)
         {
-            $sort: { $count: -1 },
+            $sort: { count: -1 },
         },
         // Stage-03 (Use limit How much data you want to show)
         {
-            $limit: 2,
-        }
+            $limit: 5,
+        },
         // Stage-04 (Use Project For data)
         {
-            $project: { $count: 1 },
+            $project: { count: 1 },
         }
+
     ])
 }
