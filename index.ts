@@ -119,7 +119,7 @@
         { $match: { gender: "Male" } },
         { $addFields: { level: 2, subject: "CSE" } }
     )
-    
+
     // Group
     // start with id
     // sum, 
@@ -128,7 +128,8 @@
     // avg, 
     // accumulator, 
     // count 
-    // //push
+    // push
+    // $$ROOT
 
     // Project
     // tag name change
@@ -136,4 +137,35 @@
 
     // group and unwind
 
+    // Bucket
+    aggregate([
+        // Stage-01
+        {
+            $bucket: {
+                groupBy: "$age",
+                boundaries: [10, 20, 30, 40, 50, 60, 70],
+                default: { "70 er Upor er Manus"},
+                output: {
+                    // Stage -01.02 (How Much Peopel In A Group)
+                    count: { $sum: 1 },
+                    // Stage -01.03(Details Of User)
+                    DetailsOFUser: { $push: "$name" },
+                    // stage -01.03 (If You see the full User Details Use Root)
+                    FullDetailsOFUser: { $push: "$$ROOT" }
+                }
+            }
+        },
+        // Stage -02 (Sort the Documet)
+        {
+            $sort: { $count: -1 },
+        },
+        // Stage-03 (Use limit How much data you want to show)
+        {
+            $limit: 2,
+        }
+        // Stage-04 (Use Project For data)
+        {
+            $project: { $count: 1 },
+        }
+    ])
 }
