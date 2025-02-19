@@ -138,7 +138,7 @@
     // group and unwind
 
     // Bucket
-    aggregate([
+    db.PracticeBanckend.aggregate([
         // Stage-01
         {
             $bucket: {
