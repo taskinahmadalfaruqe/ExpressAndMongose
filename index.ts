@@ -135,7 +135,7 @@
     // tag name change
     // substraction
 
-    // group and unwind
+    // group and unwind(Use Of Array)
 
     // Bucket
     db.PracticeBanckend.aggregate([
@@ -168,5 +168,12 @@
             $project: { count: 1 },
         }
 
+    ])
+
+    // fecet(for multy pipeline)
+    db.PracticeBanckend.aggregate([
+        // Pipeline 01
+        { $facet: {} },
+        // Pipeline 02
     ])
 }
