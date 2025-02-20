@@ -172,8 +172,22 @@
 
     // fecet(for multy pipeline)
     db.PracticeBanckend.aggregate([
-        // Pipeline 01
-        { $facet: {} },
-        // Pipeline 02
+        {
+            $facet: {
+                // Pipeline -01
+                "friendsCount": [
+                    // stage-01 
+                    { $unwind: "$friends" },
+                    // stage-02 
+                    {
+                        $group:
+                        {
+                            _id: "$friends",
+                            count: { $sum: 1 }
+                        }
+                    }
+                ]
+            }
+        }
     ])
 }
