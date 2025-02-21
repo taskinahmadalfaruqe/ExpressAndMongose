@@ -190,4 +190,7 @@
             }
         }
     ])
+
+    // Imdexing
+    db.getCollection("PracticeBackend").createIndexing({ email: 1 });
 }
