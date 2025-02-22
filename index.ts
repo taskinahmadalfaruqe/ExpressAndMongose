@@ -193,4 +193,11 @@
 
     // Imdexing
     db.getCollection("PracticeBackend").createIndexing({ email: 1 });
+
+    // Delete Indexing
+    db.getCollection("PracticeBackend").dropIndex({ email: 1 });
+
+    // Multiple Indexing
+    
+
 }
