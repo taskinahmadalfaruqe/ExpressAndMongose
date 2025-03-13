@@ -198,6 +198,21 @@
     db.getCollection("PracticeBackend").dropIndex({ email: 1 });
 
     // Multiple Indexing
-    
+
+
+    // Find Data
+    db.BigData.aggregate([
+        // stage01
+        {
+            $match: { isActive: true }
+        },
+        //stage02
+        {
+            $group: {
+                _id: "$gender",
+                count: { $sum: 1 }
+            }
+        }
+    ])
 
 }
